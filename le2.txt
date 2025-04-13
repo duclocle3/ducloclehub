@@ -1,0 +1,107 @@
+-- 📦 GALAXIUM CONTROL CORE | Roblox Hub by Duc Loc
+-- Scripted with 💙 by ChatGPT
+
+-- Load Kavo UI Library
+local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/xHeptc/Kavo-UI-Library/main/source.lua"))()
+local Window = Library.CreateLib("GALAXIUM CONTROL CORE", "BloodTheme")
+
+-- 📁 TAB DEFINITIONS
+local tabAutoFarm = Window:NewTab("AUTO FARM")
+local tabPVP = Window:NewTab("PVP")
+local tabFruits = Window:NewTab("FRUITS")
+local tabTeleport = Window:NewTab("TELEPORT")
+local tabSeaEvent = Window:NewTab("SEA EVENT")
+local tabMisc = Window:NewTab("MISC")
+local tabESP = Window:NewTab("ESP")
+
+-- 🔥 AUTO FARM SECTION
+local autoSection = tabAutoFarm:NewSection("Auto Farm")
+
+autoSection:NewToggle("Auto Farm Level", "Tự động farm quái theo level", function(state)
+    if state then
+        print("🔁 Auto Farm Level: ON")
+        -- CODE auto farm ở đây
+    else
+        print("🛑 Auto Farm Level: OFF")
+    end
+end)
+
+autoSection:NewButton("Auto Farm Boss", "Tìm và đánh boss", function()
+    -- CODE auto boss
+    print(⚔️ Tìm boss...")
+end)
+
+autoSection:NewToggle("Auto Mastery", "Tự nâng mastery vũ khí/trái", function(state)
+    -- CODE mastery farm
+end)
+
+-- ⚔️ COMBAT & PVP SECTION
+local pvpSection = tabPVP:NewSection("Combat & PvP")
+
+pvpSection:NewToggle("Aimbot Skill", "Canh tọa độ skill", function(s) end)
+pvpSection:NewToggle("Kill Aura", "Đánh tất cả địch gần", function(s) end)
+pvpSection:NewToggle("Auto Buso / Ken", "Tự bật haki khi đánh nhau", function(s) end)
+pvpSection:NewButton("No Cooldown Skill", "⚠️ Có thể bị fix", function()
+    -- CODE spam skill
+end)
+
+-- 🍇 FRUITS SECTION
+local fruitSection = tabFruits:NewSection("Trái Ác Quỷ")
+
+fruitSection:NewButton("Auto Buy Random Fruit", "Mua trái ngẫu nhiên", function() end)
+fruitSection:NewToggle("Auto Store Fruit", "Tự cất trái rơi", function(s) end)
+fruitSection:NewButton("Fruit Sniper", "Mua trái hiếm khi có", function() end)
+
+-- 🚀 TELEPORT SECTION
+local teleportSection = tabTeleport:NewSection("Di chuyển")
+
+teleportSection:NewButton("Teleport tới NPC gần nhất", function() end)
+teleportSection:NewButton("Fly Hack", function()
+    -- CODE fly
+end)
+teleportSection:NewToggle("Speed Hack", function(s) end)
+teleportSection:NewToggle("Walk on Water", function(s) end)
+teleportSection:NewToggle("No Clip", function(s) end)
+
+-- 🌊 SEA EVENT SECTION
+local seaSection = tabSeaEvent:NewSection("Sea Events")
+
+seaSection:NewToggle("Auto Sea Beast Farm", function(s) end)
+seaSection:NewButton("Teleport to Sea Event", function() end)
+seaSection:NewToggle("Auto Collect Drops", function(s) end)
+seaSection:NewToggle("Auto Ship Farm", function(s) end)
+
+-- 🧪 MISC SECTION
+local miscSection = tabMisc:NewSection("Khác")
+
+miscSection:NewButton("God Mode", function() end)
+miscSection:NewToggle("Invisibility", function(s) end)
+miscSection:NewButton("Auto Join Crew", function() end)
+
+-- 🔧 UI SETTINGS
+miscSection:NewKeybind("Toggle UI", "Hiện / Ẩn UI", Enum.KeyCode.LeftControl, function()
+    Library:ToggleUI()
+end)
+
+miscSection:NewTextBox("Phím Tắt Mới", "Nhập tên phím (vd: F)", function(input)
+    local success, newKey = pcall(function()
+        return Enum.KeyCode[input]
+    end)
+    if success and newKey then
+        miscSection:NewKeybind("UI Toggle (Mới)", "Phím mới để bật/tắt UI", newKey, function()
+            Library:ToggleUI()
+        end)
+        print("✅ Đã thêm phím mới: " .. input)
+    else
+        warn("❌ Phím không hợp lệ!")
+    end
+end)
+
+-- 🛰️ ESP SECTION
+local espSection = tabESP:NewSection("Hiển thị (ESP)")
+
+espSection:NewToggle("ESP Player", function(s) end)
+espSection:NewToggle("ESP Boss", function(s) end)
+espSection:NewToggle("ESP Fruits", function(s) end)
+espSection:NewToggle("ESP Chest", function(s) end)
+espSection:NewToggle("ESP Sea Event", function(s) end)
